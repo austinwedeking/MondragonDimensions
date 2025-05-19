@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3y4ubewfqmgn"]
+
+[ext_resource type="Script" uid="uid://dloqbg8hgxm51" path="res://Scripts/game_manager.gd" id="1_m3kro"]
+[ext_resource type="PackedScene" uid="uid://rmtsanocduvy" path="res://Scenes/card.tscn" id="2_nss6w"]
+
+[node name="GameScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m3kro")
+card = ExtResource("2_nss6w")
+
+[node name="PullButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.8
+anchor_right = 0.6
+anchor_bottom = 0.9
+grow_horizontal = 0
+grow_vertical = 0
+text = "Pull"
+
+[connection signal="pressed" from="PullButton" to="." method="pull"]
