@@ -1,16 +1,19 @@
-extends Node
-class_name GameManager
+class_name GameManager extends Node
 
 @export var card : PackedScene
 
 @onready var pull_button : Button = %PullButton
+@onready var inventory : Inventory = %Inventory
 
-var owned_cards : Array[Card]
 var card_inst : Card
 var timer : Timer
 
+func _ready() -> void:
+	inventory.manager = self
+
 func pull() -> void:
 	pull_button.visible = false
+	inventory.inventory_button.visible = false
 	card_inst = card.instantiate()
 	
 	var rand_rarity = randi_range(0, Util.all_cards.size() - 1)
@@ -35,10 +38,12 @@ func pull() -> void:
 	
 	if card_inst != null:
 		add_child(card_inst)
-	
-	card_inst.image.texture = result_card.values().front()
-	card_inst.card_name.text = str(result_card.keys().front())
-	card_inst.rarity.text = str(rand_rarity + 1)
+		
+		card_inst.image.texture = result_card.values().front()
+		card_inst.card_name.text = str(result_card.keys().front())
+		card_inst.rarity.text = str(rand_rarity + 1)
+		
+		inventory.add_to_inventory(card_inst)
 	
 	timer = Timer.new()
 	timer.timeout.connect(despawn_card)
@@ -54,3 +59,4 @@ func despawn_card() -> void:
 		timer.queue_free()
 	
 	pull_button.visible = true
+	inventory.inventory_button.visible = true

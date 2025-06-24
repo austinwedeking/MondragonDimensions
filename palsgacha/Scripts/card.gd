@@ -1,6 +1,5 @@
-extends Control
-class_name Card
+class_name Card extends Control
 
-@onready var image : TextureRect = %CardTexture
-@onready var rarity : Label = %RarityLabel
-@onready var card_name : Label = %NameLabel
+@export var image : TextureRect
+@export var rarity : Label
+@export var card_name : Label
