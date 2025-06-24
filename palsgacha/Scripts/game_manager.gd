@@ -49,7 +49,7 @@ func pull() -> void:
 	timer.timeout.connect(despawn_card)
 	timer.autostart = false
 	add_child(timer)
-	timer.start(3.0)
+	timer.start(0.5)
 
 func despawn_card() -> void:
 	if card_inst != null:
