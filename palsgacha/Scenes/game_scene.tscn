@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3y4ubewfqmgn"]
+[gd_scene load_steps=5 format=3 uid="uid://c3y4ubewfqmgn"]
 
 [ext_resource type="Script" uid="uid://dloqbg8hgxm51" path="res://Scripts/game_manager.gd" id="1_m3kro"]
 [ext_resource type="PackedScene" uid="uid://rmtsanocduvy" path="res://Scenes/card.tscn" id="2_nss6w"]
 [ext_resource type="PackedScene" uid="uid://b5wgfkuiwfgpy" path="res://Scenes/inventory.tscn" id="3_6h5vk"]
+[ext_resource type="Texture2D" uid="uid://ci6xqujivem8v" path="res://Assets/OtherImages/universe.png" id="4_fiftr"]
 
 [node name="GameScene" type="Control"]
 layout_mode = 3
@@ -29,5 +30,17 @@ anchor_bottom = 0.9
 grow_horizontal = 0
 grow_vertical = 0
 text = "Pull"
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.501961)
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_fiftr")
 
 [connection signal="pressed" from="PullButton" to="." method="pull"]
