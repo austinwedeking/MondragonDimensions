@@ -30,7 +30,6 @@ func toggle_inventory() -> void:
 		open_inv = !open_inv
 		
 		num_pages = ceil(owned_cards.size() / 10.0)
-		print(num_pages)
 		page_counter_label.text = str(current_page) + "/" + str(int(num_pages))
 		
 		show_cards()
@@ -42,6 +41,7 @@ func toggle_inventory() -> void:
 		page_counter_label.visible = false
 		open_inv = !open_inv
 		starting_inv_position = 0
+		current_page = 1
 		
 		hide_cards()
 
